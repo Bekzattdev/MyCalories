@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import scss from "./Food.module.scss";
 const FoodTracker = () => {
   const [foodName, setFoodName] = useState("");
   const [caloriesPer100g, setCaloriesPer100g] = useState<number | "">("");
@@ -24,43 +24,37 @@ const FoodTracker = () => {
   const totalCalories = foodList.reduce((sum, food) => sum + food.calories, 0);
 
   return (
-    <div>
+    <div className={scss.FoodTracker}>
       <h1>Трекер питания</h1>
-      <div>
-        <label>
-          Название продукта:
-          <input
-            type="text"
-            value={foodName}
-            onChange={(e) => setFoodName(e.target.value)}
-          />
-        </label>
+      <div className={scss.product}>
+        Название продукта:
+        <input
+          type="text"
+          value={foodName}
+          onChange={(e) => setFoodName(e.target.value)}
+        />
       </div>
-      <div>
-        <label>
-          Калории на 100 г:
-          <input
-            type="number"
-            value={caloriesPer100g}
-            onChange={(e) =>
-              setCaloriesPer100g(
-                e.target.value === "" ? "" : Number(e.target.value)
-              )
-            }
-          />
-        </label>
+      <div className={scss.product}>
+        Калории на 100 г:
+        <input
+          type="number"
+          value={caloriesPer100g}
+          onChange={(e) =>
+            setCaloriesPer100g(
+              e.target.value === "" ? "" : Number(e.target.value)
+            )
+          }
+        />
       </div>
-      <div>
-        <label>
-          Количество (г):
-          <input
-            type="number"
-            value={quantity}
-            onChange={(e) =>
-              setQuantity(e.target.value === "" ? "" : Number(e.target.value))
-            }
-          />
-        </label>
+      <div className={scss.product}>
+        Количество (г):
+        <input
+          type="number"
+          value={quantity}
+          onChange={(e) =>
+            setQuantity(e.target.value === "" ? "" : Number(e.target.value))
+          }
+        />
       </div>
       <button onClick={addFood}>Добавить продукт</button>
       <h2>Список продуктов:</h2>

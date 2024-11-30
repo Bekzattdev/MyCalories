@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import scss from "./Calories.module.scss";
 const CaloriesCalculator = () => {
   const [age, setAge] = useState<number | "">("");
   const [weight, setWeight] = useState<number | "">("");
@@ -27,78 +27,68 @@ const CaloriesCalculator = () => {
   };
 
   return (
-    <div>
+    <div className={scss.CalculateCalories}>
       <h1>Калькулятор суточной нормы калорий</h1>
-      <div>
-        <label>
-          Возраст (лет):
-          <input
-            type="number"
-            value={age}
-            onChange={(e) =>
-              setAge(e.target.value === "" ? "" : Number(e.target.value))
-            }
-          />
-        </label>
+      <div className={scss.hero}>
+        Возраст (лет):
+        <input
+          type="number"
+          value={age}
+          onChange={(e) =>
+            setAge(e.target.value === "" ? "" : Number(e.target.value))
+          }
+        />
       </div>
-      <div>
-        <label>
-          Вес (кг):
-          <input
-            type="number"
-            value={weight}
-            onChange={(e) =>
-              setWeight(e.target.value === "" ? "" : Number(e.target.value))
-            }
-          />
-        </label>
+      <div className={scss.hero}>
+        Вес (кг):
+        <input
+          type="number"
+          value={weight}
+          onChange={(e) =>
+            setWeight(e.target.value === "" ? "" : Number(e.target.value))
+          }
+        />
       </div>
-      <div>
-        <label>
-          Рост (см):
-          <input
-            type="number"
-            value={height}
-            onChange={(e) =>
-              setHeight(e.target.value === "" ? "" : Number(e.target.value))
-            }
-          />
-        </label>
+      <div className={scss.hero}>
+        Рост (см):
+        <input
+          type="number"
+          value={height}
+          onChange={(e) =>
+            setHeight(e.target.value === "" ? "" : Number(e.target.value))
+          }
+        />
       </div>
-      <div>
-        <label>
-          Пол:
-          <select
-            value={gender}
-            onChange={(e) => setGender(e.target.value as "male" | "female")}
-          >
-            <option value="male">Мужской</option>
-            <option value="female">Женский</option>
-          </select>
-        </label>
+      <div className={scss.hero}>
+        Пол:
+        <select
+          value={gender}
+          onChange={(e) => setGender(e.target.value as "male" | "female")}
+        >
+          <option value="male">Мужской</option>
+          <option value="female">Женский</option>
+        </select>
       </div>
-      <div>
-        <label>
-          Уровень физической активности:
-          <select
-            value={activity}
-            onChange={(e) => setActivity(Number(e.target.value))}
-          >
-            <option value={1.2}>Минимальная активность</option>
-            <option value={1.375}>
-              Лёгкая активность (тренировки 1-3 раза в неделю)
-            </option>
-            <option value={1.55}>
-              Умеренная активность (тренировки 3-5 раз в неделю)
-            </option>
-            <option value={1.725}>
-              Высокая активность (тренировки 6-7 раз в неделю)
-            </option>
-            <option value={1.9}>
-              Экстремальная активность (двойные тренировки)
-            </option>
-          </select>
-        </label>
+      <div className={scss.hero}>
+        Уровень физической активности:
+        <select
+          value={activity}
+          onChange={(e) => setActivity(Number(e.target.value))}
+        >
+          <option value={1.2}>Минимальная активность</option>
+          <option value={1.375}>
+            Лёгкая активность (тренировки 1-3 раза в неделю)
+          </option>
+          <option value={1.55}>
+            Умеренная активность (тренировки 3-5 раз в неделю)
+          </option>
+          <option value={1.725}>
+            Высокая активность (тренировки 6-7 раз в неделю)
+          </option>
+          <option value={1.9}>
+            Экстремальная активность (двойные тренировки)
+          </option>
+        </select>
       </div>
       <button onClick={calculateCalories}>Рассчитать</button>
       {calories && (
