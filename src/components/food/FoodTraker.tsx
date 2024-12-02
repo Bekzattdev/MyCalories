@@ -27,18 +27,18 @@ const FoodTracker = () => {
     <div className={scss.FoodTracker}>
       <h1>Трекер питания</h1>
       <div className={scss.product}>
-        Название продукта:
         <input
           type="text"
           value={foodName}
+          placeholder="Название продукта:"
           onChange={(e) => setFoodName(e.target.value)}
         />
       </div>
       <div className={scss.product}>
-        Калории на 100 г:
         <input
-          type="number"
+          type="text"
           value={caloriesPer100g}
+          placeholder="Калории на 100 г:"
           onChange={(e) =>
             setCaloriesPer100g(
               e.target.value === "" ? "" : Number(e.target.value)
@@ -47,10 +47,10 @@ const FoodTracker = () => {
         />
       </div>
       <div className={scss.product}>
-        Количество (г):
         <input
-          type="number"
+          type="text"
           value={quantity}
+          placeholder="Количество (г):"
           onChange={(e) =>
             setQuantity(e.target.value === "" ? "" : Number(e.target.value))
           }
@@ -58,13 +58,13 @@ const FoodTracker = () => {
       </div>
       <button onClick={addFood}>Добавить продукт</button>
       <h2>Список продуктов:</h2>
-      <ul>
+      <p>
         {foodList.map((food, index) => (
-          <li key={index}>
+          <ol key={index}>
             {food.name}: {food.calories.toFixed(2)} ккал ({food.quantity} г)
-          </li>
+          </ol>
         ))}
-      </ul>
+      </p>
       <h3>Общее потребление калорий: {totalCalories.toFixed(2)} ккал</h3>
     </div>
   );

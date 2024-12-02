@@ -30,46 +30,36 @@ const CaloriesCalculator = () => {
     <div className={scss.CalculateCalories}>
       <h1>Калькулятор суточной нормы калорий</h1>
       <div className={scss.hero}>
-        Возраст (лет):
         <input
-          type="number"
+          type="text"
           value={age}
+          placeholder="Возраст (лет):"
           onChange={(e) =>
             setAge(e.target.value === "" ? "" : Number(e.target.value))
           }
         />
       </div>
       <div className={scss.hero}>
-        Вес (кг):
         <input
-          type="number"
+          type="text"
           value={weight}
+          placeholder="Вес (кг):"
           onChange={(e) =>
             setWeight(e.target.value === "" ? "" : Number(e.target.value))
           }
         />
       </div>
       <div className={scss.hero}>
-        Рост (см):
         <input
-          type="number"
+          type="text"
           value={height}
+          placeholder="Рост (см):"
           onChange={(e) =>
             setHeight(e.target.value === "" ? "" : Number(e.target.value))
           }
         />
       </div>
-      <div className={scss.hero}>
-        Пол:
-        <select
-          value={gender}
-          onChange={(e) => setGender(e.target.value as "male" | "female")}
-        >
-          <option value="male">Мужской</option>
-          <option value="female">Женский</option>
-        </select>
-      </div>
-      <div className={scss.hero}>
+      <div className={scss.sport}>
         Уровень физической активности:
         <select
           value={activity}
@@ -88,6 +78,18 @@ const CaloriesCalculator = () => {
           <option value={1.9}>
             Экстремальная активность (двойные тренировки)
           </option>
+        </select>
+      </div>
+      <div className={scss.gender}>
+        Пол:
+        <select
+          value={gender}
+          onChange={(e) => setGender(e.target.value as "male" | "female")}
+        >
+          <option value="male">
+            Мужской
+          </option>
+          <option value="female">Женский</option>
         </select>
       </div>
       <button onClick={calculateCalories}>Рассчитать</button>
